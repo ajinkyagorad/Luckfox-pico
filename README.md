@@ -73,6 +73,23 @@ If you want to share your laptop's internet with your Pico, you can enable **Int
 
 These steps will ensure you have internet sharing enabled while maintaining a reliable static IP to connect to your Pico. May the fox's magic guide you through! 🦊✨
 
+### Install Useful Packages in One Command 🛠️🦊✨
+To make your Pico more versatile, you can install several useful packages with a single command. These packages include essential tools like Python, Git, Node.js, and others to enhance the Pico's capabilities:
+
+```sh
+sudo apt-get update && sudo apt-get install -y python3 git nodejs npm tightvncserver net-tools
+```
+
+This command will install:
+- **Python 3**: For scripting and automation.
+- **Git**: To manage and clone repositories.
+- **Node.js & npm**: For running JavaScript applications and managing packages.
+- **TightVNC Server**: To allow remote GUI access.
+- **Net-tools**: To provide useful networking utilities.
+
+May your Pico be powerful and ready for all the adventures ahead! 🎉🦊✨
+
 ### References 🔗📜
 - [Luckfox Pico Image Burning Guide](https://wiki.luckfox.com/Luckfox-Pico/Linux-MacOS-Burn-Image)
 - [Luckfox Pico SSH/Telnet Login Guide](https://wiki.luckfox.com/Luckfox-Pico/SSH-Telnet-Login)
+
