@@ -37,7 +37,42 @@ Welcome, brave traveler, to the magical realm of Luckfox Pico. This guide will l
 
 You should now be able to access and control your Luckfox Pico via SSH over USB successfully. May the fox's magic and nature's wonders be with you on your quest! 🎉🦊✨
 
+### Additional Section: Enabling ICS and Setting a Static IP 🌐🦊✨
+If you want to share your laptop's internet with your Pico, you can enable **Internet Connection Sharing (ICS)**. However, enabling ICS may change the default IP, making it hard to reconnect. Here are steps to maintain a static IP:
+
+1. **Enable Internet Connection Sharing**:
+   - **Go to WiFi Properties** on your laptop (`Win + R`, type `ncpa.cpl`).
+   - **Right-click on your WiFi connection**, select **Properties**, and navigate to the **Sharing** tab.
+   - Check **"Allow other network users to connect through this computer's Internet connection"**.
+   - Click **Yes** when prompted that the IP will change to `192.168.137.1`.
+
+2. **Set a Static IP on the Pico Before Enabling ICS**:
+   - First, **SSH into your Pico** using the initial IP (`ssh pico@172.32.0.70`).
+   - Once inside, edit the network configuration file to set a static IP in the ICS range:
+     ```sh
+     sudo nano /etc/network/interfaces
+     ```
+     - Modify the settings as follows:
+       ```sh
+       auto usb0
+       iface usb0 inet static
+       address 192.168.137.2
+       netmask 255.255.255.0
+       gateway 192.168.137.1
+       ```
+   - Save and apply the changes:
+     ```sh
+     sudo ifdown usb0 && sudo ifup usb0
+     ```
+
+3. **SSH Using the New Static IP**:
+   - After enabling ICS, **SSH to the new static IP**:
+     ```sh
+     ssh pico@192.168.137.2
+     ```
+
+These steps will ensure you have internet sharing enabled while maintaining a reliable static IP to connect to your Pico. May the fox's magic guide you through! 🦊✨
+
 ### References 🔗📜
 - [Luckfox Pico Image Burning Guide](https://wiki.luckfox.com/Luckfox-Pico/Linux-MacOS-Burn-Image)
 - [Luckfox Pico SSH/Telnet Login Guide](https://wiki.luckfox.com/Luckfox-Pico/SSH-Telnet-Login)
-
